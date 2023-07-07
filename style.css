@@ -1,0 +1,109 @@
+@media screen and (max-width:768px) {
+    .container{
+        background-color: white;
+        width:auto;
+    }
+    nav h1{
+        font-size: 90%;
+    }
+    
+    header{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "atas"
+                            "bawah";
+    padding-right:0;
+    width:100%;
+    }
+    .bundar{
+
+    }
+    .hkiri{
+        grid-area: bawah;
+    }
+    .hp{
+        width:100%;
+    }
+    .kiri1 {
+
+        width:100%;
+    }
+    .hkanan{
+        grid-area: atas;
+        margin-left:0;
+        display: flex;
+    justify-content: center;
+    width:100%;
+    }
+    .bundar{
+        width:300px;
+        height:300px;
+    }
+    .about{
+        grid-template-areas: "kepala"
+                            "kiri1"
+                            "kiri2"
+                            "kiri3"
+                            "kanan";
+        grid-template-columns:1fr  ;
+        grid-template-rows: .2fr .4fr .4fr .1fr 1fr;
+        padding-right:0;
+        width:100%;
+    }
+
+    .service{
+        padding: 10px;
+    }
+    .parentminiproject{
+        grid-template-columns: repeat(auto-fill, 1fr);
+        grid-gap:20px;   
+        padding:10px;
+       
+    }
+    .miniproject{
+        width:100%;
+    }
+    .miniproject div{
+        width:100%;
+        height:200px;
+    }
+    .isikontak{
+        width:90%;
+    }
+    .service{
+        width:100%;
+    }
+    .parentisiservice{
+        grid-template-columns: repeat(auto-fill, 300px);
+        padding:46px;
+    
+        width:100%;
+    }
+
+    .sertifikat{
+        width:100%;
+        justify-content: center;
+    }
+    .parentisisertifikat{
+        display:grid;
+        grid-template-columns: repeat(auto-fill, 360px);
+        padding:27px;
+        padding-bottom:30px;
+        width:100%;
+    }
+    .kontak{
+        width:100%;
+        align-items: center;
+    }
+    .isikontak{
+        flex-direction: column;
+    }
+    .kontakkiri{
+        width:100%;
+    }
+    .kontakkanan{
+        width:100%;
+    }
+    
+}

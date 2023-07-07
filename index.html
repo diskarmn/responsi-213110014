@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            font-family: Arial, Helvetica, sans-serif;
+            /* outline: 1px solid black; */
+            box-sizing: border-box;
+            transition: .3s;
+        }
+        .container{
+            display: grid;
+            min-height:max-content;
+            grid-template-areas:"nav" 
+                                "home"
+                                "about"
+                                "service"
+                                "sertifikat"
+                                "projek"
+                                "kontak";
+            grid-template-columns: 1fr;
+            grid-template-rows: .2fr .5fr .5fr .5fr .6fr .6fr .5fr;
+            background-color: rgb(245, 245, 245);
+        }
+        nav{
+            grid-area: nav;
+            box-shadow: 0 0 4px rgb(116, 116, 116);
+            justify-content: space-between;
+            position:fixed;
+            height:auto;
+            width:100%;
+            padding:5px 10px 5px 20px;
+            background-color: white;
+        }
+        nav .tampil{
+            display: flex;
+            position: fixed;
+            /* outline:1px solid red; */
+            flex-direction: column;
+            top:35px;
+            right:10px;
+            padding:5px 30px 5px 5px;
+            border-radius: 3px;
+            background-color: white;
+            outline:1px solid rgb(116, 116, 116);
+            opacity: 0;
+        } 
+        /* .opasitas{
+            opacity:1;
+        } */
+        .tampil:target{
+            opacity: 1;
+        }
+        nav h1{
+            align-self: center;
+            color: rgb(98, 98, 250);
+        }
+        nav a {
+            width: max-content;
+            height: max-content;
+            border-radius: 3px;
+            background-color: rgb(98, 98, 250);
+            padding:4px 10px;
+        }
+        nav .tampil a{
+            color:black;
+            text-decoration: none;
+            padding:4px;
+            background-color: rgba(98, 98, 250, 0);
+        }
+        nav a div{
+            width:12px;
+            height:3px;
+            margin:4px;
+            background-color: white;
+        }
+        .kontak{
+            grid-area: kontak;
+        }
+        nav, header, .service, .sertifikat, .projek, .kontak{
+            display: flex;
+            /* outline: 1px solid red; */
+        }
+        header{
+            grid-area: home;
+            justify-content: space-between;
+            padding:10px;
+            margin-top:-30px;
+            margin-bottom: 10px;
+        }
+        .hkiri{
+            display:flex;
+            justify-content: center;
+            flex-direction: column;
+            padding:10px;
+        }
+        .hkiri p{
+        }
+        .hkiri h1{
+            padding:5px 200px 5px 0;
+            font-size: 150%;
+            color: rgb(98, 98, 250);
+        }
+        .hkiri h2{
+            padding:5px 0;
+            font-weight: normal;
+            font-size: 120%;
+        }
+        .hp{
+            padding:20px 10px 20px 0;
+            font-size: 90%;
+        }
+        .kiri1 a{
+            padding:5px 10px;
+            background-color: rgb(98, 98, 250);
+            color:white;
+            border-radius: 3px;
+            font-size: 90%;
+            text-decoration: none;
+            width: max-content;
+            transition: .3;
+        }
+        .kiri1 a:hover{
+            background-color: white;
+            outline:2px solid rgb(98, 98, 250);
+            color:rgb(98, 98, 250);
+            text-decoration: underline;
+        }
+        .hkanan{
+            display: flex;
+            align-items: center;
+            margin: auto;
+
+        }
+        .bundar{
+            width:400px;
+            height:400px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background-image: url(pp.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        .about{
+            margin-top:20px;
+            padding:10px;
+            grid-area: about;
+            display: grid;
+            grid-template-areas: "kepala kepala"
+                                "kiri1 kanan"
+                                "kiri2 kanan"
+                                "kiri3 kanan";
+            grid-template-columns:1fr 1fr ;
+            grid-template-rows: .2fr .4fr .4fr .1fr;
+        }
+        .about h1{
+            grid-area: kepala;
+            align-self: center;
+            justify-self: center;
+            font-size: 130%;
+            padding:10px;
+        }
+        .judul{
+            margin-bottom: 30px;
+        }
+        .kiri1{
+            grid-area: kiri1;
+
+        }
+        .kiri1 h1{
+            font-size: 100%;
+        }
+        .kiri1 p{
+            font-size: 80%;
+            padding:10px 5px 10px 5px;
+
+        }
+        .kiri2{
+            grid-area: kiri2;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 120px) ;
+            grid-gap: 10px;
+            height:max-content;
+            padding:10px;
+        }
+        .pengalaman{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding:5px 10px;
+            height:50px;
+            /* outline:1px solid red; */
+            box-sizing: border-box;
+        }
+        .pengalaman h1{
+            font-size: 100%;
+            padding:5px;
+        }
+        .pengalaman p{
+            font-size: 90%;
+            align-self: center;
+        }
+        .kiri3{
+            grid-area: kiri3;
+            display: flex;
+            flex-direction: row;
+            padding:10px 0;
+        }
+        .kiri3 a{
+            font-size: 90%;
+            padding:5px 10px;
+            background-color: rgb(98, 98, 250);
+            color:white;
+            border-radius: 3px;
+            text-decoration: none;
+            margin-left:5px;
+            margin-right:20px;
+        }
+        .logo{
+            padding:4px 8px;
+            border-radius: 50%;
+            align-self: center;
+            background-color: rgb(116, 116, 116);
+            color: white;
+            margin:0 3px
+        }
+        .kanan{
+            grid-area: kanan;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .kanan h1{
+            width:100%;
+            font-size: 110%;
+        }
+        .garis{
+            width:100%;
+            border-radius: 3px;
+            height:15px;
+            background-color: white;
+       
+        }
+        .isigaris1,.isigaris2,.isigaris3,.isigaris4{
+            height:100%;
+            background-color: rgb(98, 98, 250);
+        }
+        .isigaris1{
+            width:88%;
+        }
+        .isigaris2{
+            width:70%;
+        }
+        .isigaris3{
+            width:40%;
+        }
+        .isigaris4{
+            width:0%;
+        }
+        
+  
+        .service{
+            padding-top:30px ;
+            grid-area: service;
+            display: flex;
+            flex-direction: column;
+      
+        }
+        .service h1{
+            align-self: center;
+            justify-self: center;
+            font-size: 130%;
+            padding:10px;
+        }
+        .parentisiservice{
+            display:grid;
+            grid-template-columns: repeat(auto-fill, 350px);
+            grid-gap:30px;
+            padding:30px;
+        }
+        .isiservice{
+            height:max-content;
+            padding:30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;  
+            align-items: center;    
+            background-color: white;  
+            box-shadow: 0 0 3px rgb(116, 116, 116);
+        }
+        .isiservice div{
+            width:50px;
+            height:50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(98, 98, 250);
+            margin:10px;
+        }
+        .isiservice h1{
+            text-align: center;
+            margin:10px;
+            font-weight: normal;
+            font-size: 150%;
+        }
+        .isiservice p{
+            text-align: center;
+        }
+        .sertifikat{
+            grid-area: sertifikat;
+            padding-top:30px ;
+            display: flex;
+            flex-direction: column;
+
+            height: max-content;
+        }
+        .sertifikat h1{
+            align-self: center;
+            justify-self: center;
+            font-size: 130%;
+            padding:10px;
+        }
+        .parentisisertifikat{
+            display:grid;
+            grid-template-columns: repeat(auto-fill, 350px);
+            grid-gap:30px;
+       
+            padding:30px;
+        }
+        .isisertifikat{
+            height:max-content;
+            padding:5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;  
+            align-items: center;    
+            background-color: white;  
+            box-shadow: 0 0 3px rgb(116, 116, 116);
+        }
+        .isisertifikat div{
+            width:200px;
+            height:130px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(98, 98, 250);
+            color:white;
+        }
+        .isisertifikat h1{
+            font-weight: normal;
+            font-size: 120%;
+        }
+        .isisertifikat a{
+            color: rgb(98, 98, 250);
+            text-decoration: none;
+        }
+        .isisertifikat a:hover{
+            text-decoration: underline;
+        }
+        .hire{
+            width:100%;
+            background-color: rgb(98, 98, 250);
+            height:max-content;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .hire p{
+            color:white;
+        }
+        .hire h1{
+            color: white;
+            font-weight: normal;
+            font-size: 120%;
+        }
+        .hire a{
+            color:white;
+            text-decoration: none;
+            padding:5px 10px;
+            border-radius: 3px;
+            outline: 1px solid white;
+        }
+        .hire a:hover{
+            background-color: white;
+            color:rgb(98, 98, 250);
+            text-decoration: underline;
+        }
+        .projek{
+            grid-area: projek;
+            padding-top:30px;
+            display: flex;
+            flex-direction: column;
+
+        }
+        .projek h1{
+            align-self: center;
+            justify-self: center;
+            font-size: 130%;
+            padding:10px;
+        }
+        .parentminiproject{
+            display:grid;
+            grid-template-columns: repeat(auto-fill, 400px);
+            grid-gap:30px;   
+            padding:30px;
+            width:100%;
+      
+        }
+        .miniproject{
+            height:max-content;
+            padding:5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;  
+            align-items: center;    
+       
+        }
+        .miniproject div{
+            width:400px;
+            height:200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(98, 98, 250);
+            color:white;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .miniproject:nth-child(1) div{
+            background-image: url('mia.png');
+            
+        }
+        .miniproject:nth-child(2) div{
+            background-image: url('ss2.png');
+            
+        }
+        .miniproject h1{
+            font-weight: normal;
+            font-size: 120%;
+        }
+        .miniproject a{
+            color:white;
+            text-decoration: none;
+            padding:5px 10px;
+            border-radius: 3px;
+            background-color: rgb(98, 98, 250);
+        }
+        .miniproject a:hover{
+            background-color: transparent;
+            color:rgb(98, 98, 250);
+            outline: 1px solid rgb(98, 98, 250);
+        }
+        .kontak{
+            grid-area: kontak;
+            padding-top:30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .kontak h1{
+            align-self: center;
+            justify-self: center;
+            font-size: 130%;
+            padding:10px;
+        }
+        .isikontak{
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+        }
+        .kontakkiri{
+            width:40%;
+            display: flex;
+            flex-direction: column;
+
+        }
+        .kontak1{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding:10px;
+        }
+        .klogo{
+            width:50px;
+            height:50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(98, 98, 250);
+            border-radius: 50%;
+            color:white;
+            
+        }
+        .sebelahlogo{
+            padding-left:10px;
+        }
+        .sebelahlogo h1{
+            font-weight: normal;
+            font-size: 120%;
+        }
+        .sebelahlogo p{
+            font-size: 90%;
+        }
+        .kontakkanan{
+            display: flex;
+            align-items: center;
+
+            width:40%;
+        }
+        .kontakkanan form{
+            display: flex;
+            flex-direction: column;
+            width:100%;
+        }
+        .kontakkanan form input[type=text]{
+            padding:5px;
+            background-color: white;
+            border-radius: 2px;
+            margin:10px 0;
+            width:95%;
+            align-self: center;
+        }
+        .kontakkanan form input[type=email]{
+            padding:5px;
+            background-color: white;
+            border-radius: 2px;
+            margin:10px 0;
+            width:95%;
+            align-self: center;
+        }
+        .kontakkanan form textarea{
+            padding:5px;
+            background-color: white;
+            border-radius: 2px;
+            margin:10px 0;
+            width:95%;
+            align-self: center;
+        }
+        .kontakkanan form input[type=submit]{
+            padding:5px;
+            background-color: rgb(98, 98, 250);
+            border-radius: 5px;
+            margin:10px 0;
+            color:white;
+        }
+        
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+                <h1>Portopolio</h1>
+                <a href="#tampil" >
+                    <div></div><div></div><div></div>
+                </a>
+                <div class="tampil" id="tampil">
+                    <a href="#header">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#service">Service</a>
+                    <a href="#sertifikat">Certificated</a>
+                    <a href="#projek">Project</a>
+                    <a href="#kontak">Contact</a>
+                </div>
+            </nav>
+        <header id="header">
+                <div class="hkiri">
+                    <p>Hasil Saya</p>
+                    <h1>FRONT END NOOB DEVELOPER</h1>
+                    <h2>Diska Romandoni</h2>
+                    <p class="hp">Saya Diska Romandoni tinggal di Yogyakarta, 
+                        sedang mencoba merintis karir menjadi seorang 
+                        Programmer kususnya Front End Developer</p>
+                    
+                </div>
+                <div class="hkanan">
+                    <div class="bundar">
+                    </div>
+                </div>
+        </header>
+        <main class="about" id="about">
+            <h1 class="judul">About Me</h1>
+            <div class="kiri1">
+                <h1>IT Background, ingn belajar terus</h1>
+                <p>saya sangat ingin sekali menjadi seorang eb Developer
+                    profesional, walau saya baru mempelajari di semester 3
+                    saya selalu meluangkan waktu untuk belajar otodidak dari segala sumber
+                    setiap hasil percobaan saat bermain main dengan css dan javascript terutama dom
+                    saya suka mempostingnya di akun instagram saya.
+                </p>
+                <a href="https://instagram.com/ro.lunastra?igshid=NGExMmI2YTkyZg==">Lihat Instagram</a>
+            </div>
+            <div class="kiri2">
+                <div class="pengalaman">
+                   <h1> pengalaman1</h1>
+                   <p>pengalaman1</p>
+                </div>
+                <div class="pengalaman">
+                    <h1> pengalaman1</h1>
+                   <p>pengalaman1</p>
+                </div>
+                <div class="pengalaman">
+                    <h1> pengalaman1</h1>
+                    <p>pengalaman1</p>
+                </div>
+            </div>
+            <div class="kiri3">
+                <a href="">Download CV</a>
+                <div class="logo">a</div>
+                <div class="logo">b</div>
+                <div class="logo">c</div>
+                <div class="logo">d</div>
+            </div>
+            <div class="kanan">
+                <h1>HTML</h1>
+                <div class="garis">
+                    <div class="isigaris1"></div>
+                </div>
+                <h1>CSS</h1>
+                <div class="garis">
+                    <div class="isigaris2"></div>
+                </div>
+                <h1>Javascript</h1>
+                <div class="garis">
+                    <div class="isigaris3"></div>
+                </div>
+                <h1>Boostrap</h1>
+                <div class="garis">
+                    <div class="isigaris4"></div>
+                </div>
+            </div>
+        </main>
+        <main class="service" id="service">
+            <h1>What I Do</h1>
+            <div class="parentisiservice">
+                <div class="isiservice">
+                    <div class="logo">logo</div>
+                    <h1>Front End Developer</h1>
+                    <p>walau belajr otodidak saya ingin belajaer terus</p>
+                </div>
+                <div class="isiservice">
+                    <div class="logo">logo</div>
+                    <h1>GYM</h1>
+                    <p>walau diuar topik namun saya sangat menjaga kesehatan saya</p>
+                </div>
+                <div class="isiservice">
+                    <div class="logo">logo</div>
+                    <p>isi service lain</p>
+                </div>
+            </div>
+        </main>
+        <main class="sertifikat" id="sertifikat">
+            <h1>Certificated</h1>
+            <div class="parentisisertifikat">
+                <div class="isisertifikat">
+                    <div class="contohsertifikat">
+                        contoh sertifikat
+                    </div>
+                    <h1>contoh sertifikat</h1>
+                    <a href="#">Lihat Detail</a>
+                </div>
+                <div class="isisertifikat">
+                    <div class="contohsertifikat">
+                        contoh sertifikat
+                    </div>
+                    <h1>contoh sertifikat</h1>
+                    <a href="#">Lihat Detail</a>
+                </div>
+                <div class="isisertifikat">
+                    <div class="contohsertifikat">
+                        contoh sertifikat
+                    </div>
+                    <h1>contoh sertifikat</h1>
+                    <a href="#">Lihat Detail</a>
+                </div>
+                <div class="isisertifikat">
+                    <div class="contohsertifikat">
+                        contoh sertifikat
+                    </div>
+                    <h1>contoh sertifikat</h1>
+                    <a href="#">Lihat Detail</a>
+                </div>
+            </div>
+            <div class="hire">
+                <p>Punya Project kecil-kecilan?</p>
+                <h1>Saya siap membantu project anda </h1>
+                <a href="#projek">Hire Me</a>
+            </div>
+        </main>
+        <main class="projek" id="projek">
+            <h1>Mini Project</h1>
+            <div class="parentminiproject">
+                <div class="miniproject">
+                    <div></div>
+                    <h1>Made In Abyss Website</h1>
+                    <a href="https://diskarmn.github.io/diskamadeinabyss.github.io/">Lihat Detail</a>
+                </div>
+                <div class="miniproject">
+                    <div></div>
+                    <h1>made in abyss + display scroll</h1>
+                    <a href="https://diskarmn.github.io/displayscroll.github.io/">Lihat Detail</a>
+                </div>
+                <div class="miniproject">
+                    <div>gambar</div>
+                    <h1>Contoh Mini Project</h1>
+                    <a href="#">Lihat Detail</a>
+                </div>
+                <div class="miniproject">
+                    <div>gambar</div>
+                    <h1>Contoh Mini Project</h1>
+                    <a href="#">Lihat Detail</a>
+                </div>
+                <div class="miniproject">
+                    <div>gambar</div>
+                    <h1>Contoh Mini Project</h1>
+                    <a href="#">Lihat Detail</a>
+                </div>
+            </div>
+        </main>
+        <main class="kontak" id="kontak">
+            <h1>Contact Me</h1>
+            <div class="isikontak">
+                <div class="kontakkiri">
+                    <div class="kontak1">
+                        <div class="klogo">
+                            logo
+                        </div>
+                        <div class="sebelahlogo">
+                            <h1>Email</h1>
+                            <p>diskarmn@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="kontak1">
+                        <div class="klogo">
+                            logo
+                        </div>
+                        <div class="sebelahlogo">
+                            <h1>Telephone</h1>
+                            <p>081284013044</p>
+                        </div>
+                    </div>
+                    <div class="kontak1">
+                        <div class="klogo">
+                            logo
+                        </div>
+                        <div class="sebelahlogo">
+                            <h1>Address</h1>
+                            <p>Yogyakarta, Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="kontakkanan">
+                    <form>
+                        <input type="text" id="name" name="name" placeholder="Masukkan Nama" required>
+                        <input type="email" id="email" name="email" placeholder="Masukkan Email" required>
+                        <textarea id="comment" name="comment" placeholder="Masukkan Komentar" required></textarea>
+                        <input type="submit" value="Kirim Pesan">
+                      </form>
+                      
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        // const tampil=document.querySelector('#tampil');
+        // const targettampil=document.querySelector('.tampil');
+        // tampil.addEventListener('click',function(){
+        //     targettampil.classList.toggle('opasitas');
+        // });
+        </script>
+</body>
+</html>
